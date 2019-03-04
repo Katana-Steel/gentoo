@@ -1,0 +1,26 @@
+diff --git a/createdocs.py b/createdocs.py
+index f31ee8b..69c89b2 100755
+--- a/createdocs.py
++++ b/createdocs.py
+@@ -24,7 +24,7 @@ def create_stdlib_docs():
+ 
+         # create HTML version of docs for them as don't have yelp
+         os.chdir("doc/gnofract4d-manual/C")        
+-        retval = os.system("xsltproc --output gnofract4d-manual.html --stringparam html.stylesheet docbook.css gnofract4d.xsl gnofract4d-manual.xml")
++        retval = os.system("xsltproc --nonet --output gnofract4d-manual.html --stringparam html.stylesheet docbook.css gnofract4d.xsl gnofract4d-manual.xml")
+         if retval != 0:
+             raise Exception("error processing xslt")
+     except Exception as err:
+diff --git a/doc/gnofract4d-manual/C/gnofract4d.xsl b/doc/gnofract4d-manual/C/gnofract4d.xsl
+index 4b0120d..19ad421 100644
+--- a/doc/gnofract4d-manual/C/gnofract4d.xsl
++++ b/doc/gnofract4d-manual/C/gnofract4d.xsl
+@@ -3,7 +3,7 @@
+ 
+ 
+ <!-- Imports the DocBook HTML chunking stylesheets. --> 
+-<xsl:import href="/usr/share/sgml/docbook/stylesheet/xsl/nwalsh/xhtml/docbook.xsl"/>
++<xsl:import href="http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl"/>
+ <xsl:template match="guimenuitem">
+   <span class="guimenuitem"><xsl:call-template name="inline.charseq"/></span>
+ </xsl:template>
